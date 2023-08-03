@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -1 | grep -v "^\.$" | grep -v "/$" | sort | tr -d " " | tr '\n' ","
+ls -pamv
