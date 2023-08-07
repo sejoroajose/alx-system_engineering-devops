@@ -1,2 +1,2 @@
 #!/bin/bash
-awk 'NR==3' iacta
+perl -e 'while(<>){if(++$l~~[3]){print}}' < iacta
