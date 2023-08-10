@@ -1,2 +1,2 @@
 #!/bin/bin
-ls -1t | tail -n 10
+ls -1 |head -n 10
