@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Get listening sockets
+listening_sockets=$(netstat -tuln | awk '$6 == "LISTEN"')
+
+# Print header
+echo "Listening Ports | PID | Program Name"
+
+# Iterate over listening sockets
+while read -r line; do
+    # Extract port and protocol
+    port=$(echo "$line" | awk '{print $4}')
+    protocol=$(echo "$line" | awk '{print $1}')
+    
+    # Extract PID and program name
+    pid=$(echo "$line" | awk '{print $7}' | cut -d'/' -f1)
+    program=$(echo "$line" | awk '{print $7}' | cut -d'/' -f2-)
+    
+    # Print information
+    echo "$port ($protocol) | $pid | $program"
+done <<< "$listening_sockets"

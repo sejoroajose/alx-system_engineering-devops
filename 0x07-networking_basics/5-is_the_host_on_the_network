@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Check if an IP address is online by pinging it
+
+# Check if argument is provided
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 {IP_ADDRESS}"
+    exit 1
+fi
+
+# Get IP address from command line argument
+ip_address=$1
+
+# Ping the IP address 5 times
+ping_result=$(ping -c 5 "$ip_address")
+
+# Print the ping result
+echo "$ping_result"
